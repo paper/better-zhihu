@@ -58,11 +58,12 @@ $(function(){
 				height:100%;
 				top:0;
 				display:none;
-				background:rgba(0,0,0,0.5);
+				background:rgba(255, 255, 255, 0.2);
 			}
 			.paper-dialog-detail-box{
 				width:550px;
-				margin:130px auto 0;
+				top: 50%;
+				margin:-230px auto 0;
 				position:relative;
 				background-color:#fff;
 				color:#000;
@@ -80,17 +81,19 @@ $(function(){
 				color:#333;
 			}
 			.paper-dialog-detail-box-close-btn{
-				background-color: #eee;
-				border-radius: 5px;
-				height: 20px;
-				line-height: 18px;
-				text-align: center;
+				background-color: #333;
+				border: 3px solid #fff;
+				border-radius: 30px;
+				color: #fff;
+				font-size: 18px;
+				height: 26px;
+				line-height: 22px;
 				position: absolute;
-				right: -10px;
-				top: -10px;
-				width: 20px;
-				color:#555;
-				text-decoration:none;
+				right: -16px;
+				text-align: center;
+				text-decoration: none;
+				top: -16px;
+				width: 26px;
 			}
 			.paper-dialog-detail-box-bd{
 				padding:0 10px 10px;
@@ -138,7 +141,7 @@ $(function(){
 				<div class="paper-dialog-detail-box">
 					<div class="paper-dialog-detail-box-hd">
 						<h5>查看他们的对话 (仅供参考)</h5>
-						<a class="paper-dialog-detail-box-close-btn" href="javascript:;"><span>x</span></a>
+						<a class="paper-dialog-detail-box-close-btn" href="javascript:;" title="关闭"><span>x</span></a>
 					</div>
 					<div class="paper-dialog-detail-box-bd">
 						<ul>
@@ -193,9 +196,33 @@ $(function(){
 	
 	
 	// 查看对话详细
-	$(document).on("click", ".paper-dialog-detail-box-close-btn", function(){
+	
+	var $paperDialogDetailUl = $("#paper-dialog-detail-box-wrap .paper-dialog-detail-box-bd ul"); 
+	
+	function closePaperDialog(){
 		$("#paper-dialog-detail-box-wrap").hide();
-		$("#paper-dialog-detail-box-wrap .paper-dialog-detail-box-bd ul").html("");
+		$paperDialogDetailUl.html("");
+	}
+	
+	$(document).on("click", ".paper-dialog-detail-box-close-btn", function(){
+		closePaperDialog();
+	});
+	
+	$(document).on("click", "#paper-dialog-detail-box-wrap", function(){
+		closePaperDialog();
+	});
+	
+	$(document).on("click", ".paper-dialog-detail-box", function(event){
+		event.stopPropagation()
+	});
+	
+	$(document).on("mouseover", ".zm-item-comment", function(){
+		var $hd = $(this).find(".zm-comment-hd");
+		var zmCommentHdHtml = $hd.html();
+		
+		if( zmCommentHdHtml.indexOf("回复") > -1 && zmCommentHdHtml.indexOf("paper-dialog-detail") == -1 ){
+			$hd.append('<a class="paper-dialog-detail" href="javascript:;">查看对话</a>');
+		}
 	});
 	
 	$(document).on("mouseover", ".zm-item-comment", function(){
@@ -249,7 +276,7 @@ $(function(){
 		
 		if( msg.length !== 0 ){
 			
-			var $paperDialogDetailUl = $("#paper-dialog-detail-box-wrap .paper-dialog-detail-box-bd ul");
+			
 			
 			msg.forEach(function(v, i){
 				
