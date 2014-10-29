@@ -54,7 +54,7 @@ $(function(){
 			#paper-dialog-detail-box-wrap{
 				width:100%;
 				position:fixed;
-				z-index:9999;
+				z-index:80;
 				height:100%;
 				top:0;
 				display:none;
