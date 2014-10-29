@@ -116,7 +116,7 @@ $(function(){
 				clear:both;
 				padding-bottom:4px;
 			}
-			.paper-dialog-detail-box-bd li p{
+			.paper-dialog-detail-box-bd li div{
 				background:#eee;
 				padding:5px 10px;
 				border-radius: 5px;
@@ -128,7 +128,7 @@ $(function(){
 			.paper-dialog-detail-box-bd li.t-right span{
 				text-align:right;
 			}
-			.paper-dialog-detail-box-bd li.t-right p{
+			.paper-dialog-detail-box-bd li.t-right div{
 				float:right;
 			} 
 		*/
@@ -289,15 +289,13 @@ $(function(){
 					/*
 						<li class="{{className}}">
 							<span>{{from}}{{to}}</span>
-							<p>{{content}}</p>
+							<div>{{content}}</div>
 						</li>
 					*/
 				}));
 			});
 			
 			$("#paper-dialog-detail-box-wrap").show();
-			
-			//console.log(msg.join("\n"));
 			
 		}
 		
