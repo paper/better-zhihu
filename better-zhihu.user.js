@@ -9,13 +9,11 @@
 // ==/UserScript==
 
 /**
-  一些说明：
-
-  1）zhihu 的 jq 版本是 1.10.2 ( jQuery("body").jquery )
-  2）基于 油猴 2.2 版本
+  https://github.com/paper/better-zhihu
   
-  2015-02-06
-  3) 去掉顶栏的显示与隐藏，会有点晃眼，哈哈~
+  一些说明：
+  1）zhihu 的 jq 版本是 1.10.2 [ jQuery("body").jquery ]
+  2）基于 油猴 2.2 版本
  */
 
 //动态加载css
