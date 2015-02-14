@@ -9,12 +9,12 @@
 // ==/UserScript==
 
 /**
-  https://github.com/paper/better-zhihu
-  
   一些说明：
-  1）zhihu 的 jq 版本是 1.10.2 [ jQuery("body").jquery ]
-  2）基于 油猴 2.2 版本
- */
+
+  1) zhihu 的 jq 版本是 1.10.2 ( jQuery("body").jquery )
+  2) 基于 油猴 2.2 版本
+  3) https://github.com/paper/better-zhihu
+*/
 
 //动态加载css
 function loadStyle(cssStr) {
@@ -44,6 +44,12 @@ $(function () {
     }
     .zm-comment-box{
       font-size:14px;
+    }
+    
+    .paper-zm-item-close-btn{
+      color:#039 !important;
+      float:right;
+      margin-right:10px;
     }
     
     .paper-dialog-detail{
@@ -384,5 +390,27 @@ $(function () {
   });
   
   autoSetCommentBoxHeight();
+  
+  
+  // 收起某人的评论 (有时这个人的评论很长，但又不想看，就收起它)
+  $('.zm-item-answer-author-wrap').append('<a data-close="0" href="javascript:;" class="paper-zm-item-close-btn">[ 收起 ]</a>');
+  
+  $(document).on("click", ".paper-zm-item-close-btn", function () {
+    $this = $(this);
+    
+    var $zmItemAnswer = $this.parents('.zm-item-answer');
+    var $zmItemRichText = $zmItemAnswer.find(".zm-item-rich-text");
+    
+    if( $this.attr('data-close') === '0' ){
+      $zmItemRichText.hide();
+      $this.attr('data-close', '1');
+      $this.html('[ 展开 ]');
+    }else{
+      $zmItemRichText.show();
+      $this.attr('data-close', '0');
+      $this.html('[ 收起 ]');
+    }
+    
+  });
   
 });
