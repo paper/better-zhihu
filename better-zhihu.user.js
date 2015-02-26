@@ -5,16 +5,15 @@
 // @include     http://www.zhihu.com/*
 // @version     1
 // @grant       none
-// @require		https://raw.githubusercontent.com/paper/javascript-multiline-string/master/multiline.js
+// @require     https://raw.githubusercontent.com/paper/javascript-multiline-string/master/multiline.js
 // ==/UserScript==
 
 /**
   一些说明：
 
-  1) zhihu 的 jq 版本是 1.10.2 ( jQuery("body").jquery )
-  2) 基于 油猴 2.2 版本
-  3) https://github.com/paper/better-zhihu
-*/
+  1）zhihu 的 jq 版本是 1.10.2 ( jQuery("body").jquery )
+  2）基于 油猴 2.2 版本
+ */
 
 //动态加载css
 function loadStyle(cssStr) {
@@ -50,6 +49,10 @@ $(function () {
       color:#039 !important;
       float:right;
       margin-right:10px;
+      display:none;
+    }
+    .zm-item-answer:hover .paper-zm-item-close-btn{
+      display:block;
     }
     
     .paper-dialog-detail{
